@@ -1,0 +1,231 @@
+Thu 19 Dec 11:52:18 GMT 2013
+-------------------------------------------------------------------------------
+Bean: Alfresco:Category=Audit,Type=Configuration,id1=default
+audit.tagging.enabled = true; (Editable Property audit.tagging.enabled)
+
+audit.sync.enabled = true; (Editable Property audit.sync.enabled)
+
+audit.enabled = true; (Editable Property audit.enabled)
+
+audit.cmischangelog.enabled = false; (Editable Property audit.cmischangelog.enabled)
+
+audit.alfresco-access.enabled = false; (Editable Property audit.alfresco-access.enabled)
+
+-------------------------------------------------------------------------------
+Bean: Alfresco:Category=Authentication,Type=Configuration,id1=managed,id2=alfrescoNtlm1
+$type = alfrescoNtlm; (Read-only subsystem type name)
+
+alfresco.authentication.allowGuestLogin = true; (Editable Property alfresco.authentication.allowGuestLogin)
+
+alfresco.authentication.authenticateCIFS = true; (Editable Property alfresco.authentication.authenticateCIFS)
+
+alfresco.authentication.sessionCleanup = true; (Editable Property alfresco.authentication.sessionCleanup)
+
+ntlm.authentication.browser.ticketLogons = true; (Editable Property ntlm.authentication.browser.ticketLogons)
+
+ntlm.authentication.mapUnknownUserToGuest = false; (Editable Property ntlm.authentication.mapUnknownUserToGuest)
+
+ntlm.authentication.sso.enabled = false; (Editable Property ntlm.authentication.sso.enabled)
+
+-------------------------------------------------------------------------------
+Bean: Alfresco:Category=Authentication,Type=Configuration,id1=manager
+chain = alfrescoNtlm1:alfrescoNtlm; (Comma separated list of name:type pairs)
+
+-------------------------------------------------------------------------------
+Bean: Alfresco:Category=OOoDirect,Type=Configuration,id1=default
+$type = default; (Read-only subsystem type name)
+
+ooo.enabled = false; (Editable Property ooo.enabled)
+
+ooo.exe = /home/miguel/opt/alfresco-4.1.5/openoffice/program/soffice.bin; (Editable Property ooo.exe)
+
+ooo.host = localhost; (Editable Property ooo.host)
+
+ooo.port = 8100; (Editable Property ooo.port)
+
+-------------------------------------------------------------------------------
+Bean: Alfresco:Category=OOoJodconverter,Type=Configuration,id1=default
+$type = default; (Read-only subsystem type name)
+
+jodconverter.enabled = true; (Editable Property jodconverter.enabled)
+
+jodconverter.maxTasksPerProcess = 200; (Editable Property jodconverter.maxTasksPerProcess)
+
+jodconverter.officeHome = /home/miguel/opt/alfresco-4.1.5/openoffice; (Editable Property jodconverter.officeHome)
+
+jodconverter.portNumbers = 8100; (Editable Property jodconverter.portNumbers)
+
+jodconverter.taskExecutionTimeout = 120000; (Editable Property jodconverter.taskExecutionTimeout)
+
+jodconverter.taskQueueTimeout = 30000; (Editable Property jodconverter.taskQueueTimeout)
+
+jodconverter.templateProfileDir = ; (Editable Property jodconverter.templateProfileDir)
+
+-------------------------------------------------------------------------------
+Bean: Alfresco:Category=Replication,Type=Configuration,id1=default
+$type = default; (Read-only subsystem type name)
+
+replication.enabled = true; (Editable Property replication.enabled)
+
+replication.transfer.readonly = true; (Editable Property replication.transfer.readonly)
+
+-------------------------------------------------------------------------------
+Bean: Alfresco:Category=Synchronization,Type=Configuration,id1=default
+$type = default; (Read-only subsystem type name)
+
+synchronization.allowDeletions = true; (Editable Property synchronization.allowDeletions)
+
+synchronization.autoCreatePeopleOnLogin = true; (Editable Property synchronization.autoCreatePeopleOnLogin)
+
+synchronization.import.cron = 0 0 0 * * ?; (Editable Property synchronization.import.cron)
+
+synchronization.loggingInterval = 100; (Editable Property synchronization.loggingInterval)
+
+synchronization.syncOnStartup = true; (Editable Property synchronization.syncOnStartup)
+
+synchronization.syncWhenMissingPeopleLogIn = true; (Editable Property synchronization.syncWhenMissingPeopleLogIn)
+
+synchronization.synchronizeChangesOnly = true; (Editable Property synchronization.synchronizeChangesOnly)
+
+synchronization.workerThreads = 2; (Editable Property synchronization.workerThreads)
+
+-------------------------------------------------------------------------------
+Bean: Alfresco:Category=email,Type=Configuration,id1=inbound
+-------------------------------------------------------------------------------
+Bean: Alfresco:Category=email,Type=Configuration,id1=outbound
+-------------------------------------------------------------------------------
+Bean: Alfresco:Category=fileServers,Type=Configuration,id1=default
+-------------------------------------------------------------------------------
+Bean: Alfresco:Category=googledocs,Type=Configuration,id1=default
+-------------------------------------------------------------------------------
+Bean: Alfresco:Category=imap,Type=Configuration,id1=default
+-------------------------------------------------------------------------------
+Bean: Alfresco:Category=imap,Type=Configuration,id1=default,id2=imap.config.server.mountPoints,id3=AlfrescoIMAP
+-------------------------------------------------------------------------------
+Bean: Alfresco:Category=sysAdmin,Type=Configuration,id1=default
+-------------------------------------------------------------------------------
+Bean: Alfresco:Category=thirdparty,Type=Configuration,id1=default
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=admIndexTrackerTrigger,Type=MonitoredCronTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=avmExpiredContentTrigger,Type=MonitoredCronTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=avmIndexTrackerTrigger,Type=MonitoredCronTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=avmOrphanReaperJob,Type=MonitoredSimpleTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=contentStoreCleanerTrigger,Type=MonitoredCronTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=contentUrlConverterTrigger,Type=MonitoredCronTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=feedCleanerTrigger,Type=MonitoredSimpleTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=feedGeneratorTrigger,Type=MonitoredSimpleTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=ftsIndexerTrigger,Type=MonitoredSimpleTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=heartbeatTrigger,Type=MonitoredSimpleTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=indexBackupTrigger,Type=MonitoredCronTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=migrateVersionStoreTrigger,Type=MonitoredCronTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=missingFullTextReindexTrigger,Type=MonitoredCronTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=nodeServiceCleanupTrigger,Type=MonitoredCronTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=openOfficeConnectionTesterTrigger,Type=MonitoredCronTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=postCleanerTrigger,Type=MonitoredSimpleTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=postLookupTrigger,Type=MonitoredSimpleTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=syncTrigger,Type=MonitoredCronTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=taggingStartupTrigger,Type=MonitoredSimpleTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=tempFileCleanerTrigger,Type=MonitoredCronTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=userUsageCollapseJob,Type=MonitoredSimpleTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Group=DEFAULT,Name=Schedule,Trigger=vlt,Type=MonitoredSimpleTrigger
+-------------------------------------------------------------------------------
+Bean: Alfresco:Index=archive/SpacesStore,Name=LuceneIndexes
+-------------------------------------------------------------------------------
+Bean: Alfresco:Index=avm/sitestore,Name=LuceneIndexes
+-------------------------------------------------------------------------------
+Bean: Alfresco:Index=system/system,Name=LuceneIndexes
+-------------------------------------------------------------------------------
+Bean: Alfresco:Index=user/alfrescoUserStore,Name=LuceneIndexes
+-------------------------------------------------------------------------------
+Bean: Alfresco:Index=workspace/SpacesStore,Name=LuceneIndexes
+-------------------------------------------------------------------------------
+Bean: Alfresco:Index=workspace/lightWeightVersionStore,Name=LuceneIndexes
+-------------------------------------------------------------------------------
+Bean: Alfresco:Index=workspace/version2Store,Name=LuceneIndexes
+-------------------------------------------------------------------------------
+Bean: Alfresco:Name=Authority
+-------------------------------------------------------------------------------
+Bean: Alfresco:Name=ConnectionPool
+-------------------------------------------------------------------------------
+Bean: Alfresco:Name=ContentStore,Root=/home/miguel/opt/alfresco-3.4.6/alf_data/contentstore,Type=org.alfresco.repo.content.filestore.FileContentStore
+-------------------------------------------------------------------------------
+Bean: Alfresco:Name=ContentStore,Root=/home/miguel/opt/alfresco-3.4.6/alf_data/contentstore.deleted,Type=org.alfresco.repo.content.filestore.FileContentStore
+-------------------------------------------------------------------------------
+Bean: Alfresco:Name=ContentStore,Root=/home/miguel/opt/alfresco-3.4.6/tomcat/temp/Alfresco,Type=org.alfresco.repo.content.filestore.FileContentStore
+-------------------------------------------------------------------------------
+Bean: Alfresco:Name=ContentTransformer,Type=ImageMagick
+-------------------------------------------------------------------------------
+Bean: Alfresco:Name=ContentTransformer,Type=pdf2swf
+-------------------------------------------------------------------------------
+Bean: Alfresco:Name=DatabaseInformation
+DriverName = MySQL-AB JDBC Driver; (Attribute exposed for management)
+
+DatabaseMinorVersion = 5; (Attribute exposed for management)
+
+DriverMajorVersion = 5; (Attribute exposed for management)
+
+DriverMinorVersion = 1; (Attribute exposed for management)
+
+JDBCMajorVersion = 3; (Attribute exposed for management)
+
+JDBCMinorVersion = 0; (Attribute exposed for management)
+
+URL = jdbc:mysql://localhost/alfresco?useUnicode=yes&characterEncoding=UTF-8&includeInnodbStatusInDeadlockExceptions=true&includeThreadDumpInDeadlockExceptions=true; (Attribute exposed for management)
+
+UserName = alfresco@localhost; (Attribute exposed for management)
+
+DatabaseProductVersion = 5.5.34-MariaDB; (Attribute exposed for management)
+
+DatabaseProductName = MySQL; (Attribute exposed for management)
+
+DatabaseMajorVersion = 5; (Attribute exposed for management)
+
+DriverVersion = mysql-connector-java-5.1.7 ( Revision: ${svn.Revision} ); (Attribute exposed for management)
+
+StoresUpperCaseQuotedIdentifiers = true; (Attribute exposed for management)
+
+StoresMixedCaseQuotedIdentifiers = true; (Attribute exposed for management)
+
+StoresUpperCaseIdentifiers = false; (Attribute exposed for management)
+
+StoresLowerCaseIdentifiers = false; (Attribute exposed for management)
+
+StoresMixedCaseIdentifiers = true; (Attribute exposed for management)
+
+StoresLowerCaseQuotedIdentifiers = false; (Attribute exposed for management)
+
+-------------------------------------------------------------------------------
+Bean: Alfresco:Name=FileServerConfig
+-------------------------------------------------------------------------------
+Bean: Alfresco:Name=GlobalProperties
+-------------------------------------------------------------------------------
+Bean: Alfresco:Name=LicenseDescriptor
+-------------------------------------------------------------------------------
+Bean: Alfresco:Name=Log4jHierarchy
+-------------------------------------------------------------------------------
+Bean: Alfresco:Name=ModuleService
+-------------------------------------------------------------------------------
+Bean: Alfresco:Name=OpenOffice
+-------------------------------------------------------------------------------
+Bean: Alfresco:Name=PatchService

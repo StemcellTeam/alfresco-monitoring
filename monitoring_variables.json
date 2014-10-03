@@ -1,0 +1,8 @@
+{
+    "ssh_host": "xxx.xxx.xxx.xxx",
+    "ssh_username": "<username>",
+    "ssh_password": "<password>",
+    "ssh_elasticsearch": "<paht>/elasticsearch_software_packages",
+    "ssh_graphite": "<path>/graphite_software_packages",
+    "ssh_icinga": "<path>/icinga_software_packages"
+}

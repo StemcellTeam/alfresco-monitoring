@@ -1,0 +1,506 @@
+{
+  "title": "Solr Caches-NodeX",
+  "tags": [],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "rows": [
+    {
+      "title": "Tomcat and DB",
+      "height": "200px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 4,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": true,
+            "current": true,
+            "total": false,
+            "avg": false
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "null",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "targets": [
+            {
+              "target": "alias(scale(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.AlfrescoCache_CummulativeHitRatio,100),'Alfresco Cache - Cummulative Hit Ratio')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.AlfrescoCache_CummulativeInserts,'Alfresco Cache - Cummulative Inserts')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.AlfrescoCache_CummulativeEvictions,'Alfresco Cache - Cummulative Evictions')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.AlfrescoCache_CummulativeLookups,'Alfresco Cache - Cummulative Lookups')"
+            }
+          ],
+          "aliasColors": {},
+          "aliasYAxis": {},
+          "title": "Solr - Alfresco Cache",
+          "leftYAxisLabel": ""
+        },
+        {
+          "span": 4,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": true,
+            "current": true,
+            "total": false,
+            "avg": false
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "null",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "targets": [
+            {
+              "target": "alias(scale(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.DocumentCache_CummulativeHitRatio,100),'Document Cache - Cummulative Hit Ratio')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.DocumentCache_CummulativeInserts,'Document Cache - Cummulative Inserts')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.DocumentCache_CummulativeEvictions,'Document Cache - Cummulative Evictions')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.QueryResultCache_CummulativeLookups,'Document Cache - Cummulative Lookups')"
+            }
+          ],
+          "aliasColors": {},
+          "aliasYAxis": {},
+          "title": "Solr - Document Cache",
+          "leftYAxisLabel": ""
+        },
+        {
+          "span": 4,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": true,
+            "current": true,
+            "total": false,
+            "avg": false
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "null",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "targets": [
+            {
+              "target": "alias(scale(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.QueryResultCache_CummulativeHitRatio,100),'Query Result Cache - Cummulative Hit Ratio')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.QueryResultCache_CummulativeInserts,'Query Result Cache - Cummulative Inserts')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.QueryResultCache_CummulativeEvictions,'Query Result Cache - Cummulative Evictions')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.QueryResultCache_CummulativeLookups,'Query Result Cache - Cummulative Lookups')"
+            }
+          ],
+          "aliasColors": {},
+          "aliasYAxis": {},
+          "title": "Solr - Query Result Cache",
+          "leftYAxisLabel": ""
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "Tomcat and DB",
+      "height": "200px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 4,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": true,
+            "current": true,
+            "total": false,
+            "avg": false
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "null",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "targets": [
+            {
+              "target": "alias(scale(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.AlfrescoAuthorityCache_CummulativeEvictions,100),'Alfresco Authority Cache - Cummulative Hit Ratio')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.AlfrescoAuthorityCache_CummulativeInserts,'Alfresco Authority Cache - Cummulative Inserts')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.AlfrescoAuthorityCache_CummulativeEvictions,'Alfresco Authority Cache - Cummulative Evictions')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.AlfrescoAuthorityCache_CummulativeLookups,'Alfresco Authority Cache - Cummulative Lookups')"
+            }
+          ],
+          "aliasColors": {},
+          "aliasYAxis": {},
+          "title": "Solr - Alfresco Authority Cache",
+          "leftYAxisLabel": ""
+        },
+        {
+          "span": 4,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": true,
+            "current": true,
+            "total": false,
+            "avg": false
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "null",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "targets": [
+            {
+              "target": "alias(scale(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.AlfrescoPathCache_CummulativeHitRatio,100),'Alfresco Path Cache - Cummulative Hit Ratio')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.AlfrescoPathCache_CummulativeInserts,'Alfresco Path Cache - Cummulative Inserts')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.AlfrescoPathCache_CummulativeEvictions,'Alfresco Path Cache - Cummulative Evictions')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.AlfrescoPathCache_CummulativeLookups,'Alfresco Path Cache - Cummulative Lookups')"
+            }
+          ],
+          "aliasColors": {},
+          "aliasYAxis": {},
+          "title": "Solr - Alfresco Path Cache",
+          "leftYAxisLabel": ""
+        },
+        {
+          "span": 4,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": true,
+            "current": true,
+            "total": false,
+            "avg": false
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "null",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "targets": [
+            {
+              "target": "alias(scale(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.AlfrescoReaderToAclIdsCache_CummulativeHitRatio,100),'Alfresco Reader to Acl Ids Cache - Cummulative Hit Ratio')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.AlfrescoReaderToAclIdsCache_CummulativeInserts,'Alfresco Reader to Acl Ids Cache - Cummulative Inserts')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.AlfrescoReaderToAclIdsCache_CummulativeEvictions,'Alfresco Reader to Acl Ids Cache - Cummulative Evictions')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.SOLR.Caches.AlfrescoReaderToAclIdsCache_CummulativeLookups,'Alfresco Reader to Acl Ids Cache - Cummulative Lookups')"
+            }
+          ],
+          "aliasColors": {},
+          "aliasYAxis": {},
+          "title": "Solr - Alfresco Reader To Acls Ids Cache",
+          "leftYAxisLabel": ""
+        }
+      ],
+      "notice": false
+    }
+  ],
+  "pulldowns": [
+    {
+      "type": "filtering",
+      "collapse": false,
+      "notice": false,
+      "enable": false
+    },
+    {
+      "type": "annotations",
+      "enable": false
+    }
+  ],
+  "nav": [
+    {
+      "type": "timepicker",
+      "collapse": false,
+      "notice": false,
+      "enable": true,
+      "status": "Stable",
+      "time_options": [
+        "5m",
+        "15m",
+        " 30m",
+        " 1h",
+        "3h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ],
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "now": true
+    }
+  ],
+  "time": {
+    "from": "now-12h",
+    "to": "now"
+  },
+  "templating": {
+    "list": []
+  },
+  "refresh": "1m",
+  "version": 2,
+  "refresh_timer": {}
+}

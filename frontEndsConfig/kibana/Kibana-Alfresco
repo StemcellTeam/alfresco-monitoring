@@ -1,0 +1,508 @@
+{
+  "title": "Alfresco",
+  "services": {
+    "query": {
+      "idQueue": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "list": {
+        "0": {
+          "id": 0,
+          "color": "#7EB26D",
+          "alias": "INFO",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "tags:\"INFO\""
+        },
+        "1": {
+          "query": "tags:\"WARN\"",
+          "alias": "WARN",
+          "color": "#EAB839",
+          "pin": true,
+          "id": 1,
+          "type": "lucene",
+          "enable": true
+        },
+        "2": {
+          "query": "tags:\"ERROR\"",
+          "alias": "ERROR",
+          "color": "#BF1B00",
+          "pin": true,
+          "id": 2,
+          "type": "lucene",
+          "enable": true
+        },
+        "3": {
+          "query": "tags:\"DEBUG\"",
+          "alias": "DEBUG",
+          "color": "#6ED0E0",
+          "pin": true,
+          "id": 3,
+          "type": "lucene",
+          "enable": true
+        },
+        "4": {
+          "query": "tags:\"Exception\"",
+          "alias": "Exceptions",
+          "color": "#E24D42",
+          "pin": true,
+          "id": 4,
+          "type": "lucene",
+          "enable": true
+        },
+        "5": {
+          "id": 5,
+          "color": "#1F78C1",
+          "alias": "NullPointerException",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "tags:\"NullPointerException\""
+        },
+        "6": {
+          "query": "tags:\"FATAL\"",
+          "alias": "FATAL",
+          "color": "#58140C",
+          "pin": true,
+          "id": 6,
+          "type": "lucene",
+          "enable": true
+        },
+        "7": {
+          "id": 7,
+          "color": "#705DA0",
+          "alias": "OutOfMemoryError",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "tags:\"OutOfMemoryError\""
+        },
+        "8": {
+          "id": 8,
+          "color": "#508642",
+          "alias": "",
+          "pin": false,
+          "type": "lucene",
+          "enable": true,
+          "query": ""
+        },
+        "9": {
+          "id": 9,
+          "color": "#70DBED",
+          "alias": "TooManyOpenFiles",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "tags:\"TooManyOpenFiles\""
+        },
+        "10": {
+          "id": 10,
+          "color": "#447EBC",
+          "alias": "Sorl Queries",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\""
+        }
+      },
+      "ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "filter": {
+      "idQueue": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "list": {
+        "0": {
+          "type": "time",
+          "field": "@timestamp",
+          "from": "now-1h",
+          "to": "now",
+          "mandate": "must",
+          "active": true,
+          "alias": "",
+          "id": 0
+        }
+      },
+      "ids": [
+        0
+      ]
+    }
+  },
+  "rows": [
+    {
+      "title": "Histogram",
+      "height": "150px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 7,
+          "editable": true,
+          "type": "histogram",
+          "loadingEditor": false,
+          "mode": "count",
+          "time_field": "@timestamp",
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              7,
+              9,
+              10
+            ]
+          },
+          "annotate": {
+            "enable": false,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
+            ]
+          },
+          "value_field": null,
+          "auto_int": true,
+          "resolution": 100,
+          "interval": "30s",
+          "intervals": [
+            "auto",
+            "1s",
+            "1m",
+            "5m",
+            "10m",
+            "30m",
+            "1h",
+            "3h",
+            "12h",
+            "1d",
+            "1w",
+            "1y"
+          ],
+          "fill": 0,
+          "linewidth": 3,
+          "pointradius": 5,
+          "timezone": "browser",
+          "spyable": true,
+          "zoomlinks": true,
+          "bars": true,
+          "stack": true,
+          "points": false,
+          "lines": false,
+          "legend": true,
+          "show_query": true,
+          "legend_counts": true,
+          "x-axis": true,
+          "y-axis": true,
+          "percentage": false,
+          "zerofill": true,
+          "interactive": true,
+          "options": true,
+          "derivative": false,
+          "scale": 1,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true
+          },
+          "grid": {
+            "max": null,
+            "min": 0
+          },
+          "title": "Histogram",
+          "y_format": "none"
+        },
+        {
+          "error": false,
+          "span": 3,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          },
+          "field": "commandName",
+          "exclude": [
+            ""
+          ],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "bar",
+          "counter_pos": "above",
+          "spyable": true,
+          "title": "Commands",
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": ""
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "trends",
+          "loadingEditor": false,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9
+            ]
+          },
+          "style": {
+            "font-size": "12pt"
+          },
+          "ago": "1h",
+          "arrangement": "vertical",
+          "spyable": true,
+          "title": "Trends",
+          "reverse": false
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "Java Classes",
+      "height": "100px",
+      "editable": true,
+      "collapse": true,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "field": "class",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "table",
+          "counter_pos": "above",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              8
+            ]
+          },
+          "title": "Java Classes",
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": ""
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "Search Results",
+      "height": "150px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "table",
+          "loadingEditor": false,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              8
+            ]
+          },
+          "size": 10,
+          "pages": 100,
+          "offset": 0,
+          "sort": [
+            "@timestamp",
+            "desc"
+          ],
+          "group": "default",
+          "style": {
+            "font-size": "9pt"
+          },
+          "overflow": "min-height",
+          "fields": [
+            "message",
+            "host",
+            "path"
+          ],
+          "highlight": [],
+          "sortable": true,
+          "header": true,
+          "paging": true,
+          "field_list": false,
+          "all_fields": true,
+          "trimFactor": 2000,
+          "normTimes": true,
+          "spyable": true,
+          "title": "Search Results",
+          "localTime": true,
+          "timeField": "@timestamp"
+        }
+      ],
+      "notice": false
+    }
+  ],
+  "editable": true,
+  "index": {
+    "interval": "day",
+    "pattern": "[logstash-]YYYY.MM.DD",
+    "default": "NO_TIME_FILTER_OR_INDEX_PATTERN_NOT_MATCHED",
+    "warm_fields": true
+  },
+  "style": "dark",
+  "failover": false,
+  "panel_hints": true,
+  "pulldowns": [
+    {
+      "type": "query",
+      "collapse": false,
+      "notice": false,
+      "enable": true,
+      "query": "*",
+      "pinned": true,
+      "history": [
+        "+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\"",
+        "tags:\"TooManyOpenFiles\"",
+        "",
+        "tags:\"OutOfMemoryError\"",
+        "tags:\"FATAL\"",
+        "tags:\"NullPointerException\"",
+        "tags:\"Exception\"",
+        "tags:\"DEBUG\"",
+        "tags:\"ERROR\"",
+        "tags:\"WARN\""
+      ],
+      "remember": 10
+    },
+    {
+      "type": "filtering",
+      "collapse": false,
+      "notice": true,
+      "enable": true
+    }
+  ],
+  "nav": [
+    {
+      "type": "timepicker",
+      "collapse": false,
+      "notice": false,
+      "enable": true,
+      "status": "Stable",
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ],
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "timefield": "@timestamp",
+      "now": true,
+      "filter_id": 0
+    }
+  ],
+  "loader": {
+    "save_gist": false,
+    "save_elasticsearch": true,
+    "save_local": true,
+    "save_default": true,
+    "save_temp": true,
+    "save_temp_ttl_enable": true,
+    "save_temp_ttl": "30d",
+    "load_gist": false,
+    "load_elasticsearch": true,
+    "load_elasticsearch_size": 20,
+    "load_local": true,
+    "hide": false
+  },
+  "refresh": "30s"
+}
