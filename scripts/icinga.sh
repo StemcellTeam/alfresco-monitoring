@@ -22,6 +22,21 @@ yum -y install nagios-plugins-all
 service httpd restart
 service icinga restart
 
+#Set up email configuration
+yum -y install ssmtp sendmail mailx
+/etc/init.d/sendmail stop ; chkconfig sendmail off
+
+echo "" >> /etc/ssmtp/ssmtp.conf
+echo "AuthUser=<your email address i.e. user@gmail.com>
+AuthPass=<your password>
+FromLineOverride=YES
+mailhub=smtp.gmail.com:587
+UseSTARTTLS=YES
+TLS_CA_File=/etc/pki/tls/certs/ca-bundle.crt" >> /etc/ssmtp/ssmtp.conf
+
+rm /usr/sbin/sendmail
+ln -s /usr/sbin/ssmtp sendmail
+
 #Cleanup
 /bin/rm /tmp/check_alfresco
 /bin/rm /tmp/check_alfresco.jar
