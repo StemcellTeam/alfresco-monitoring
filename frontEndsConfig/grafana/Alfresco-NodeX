@@ -1,9 +1,12 @@
 {
+  "id": null,
   "title": "Alfresco-NodeX",
+  "originalTitle": "Alfresco-NodeX",
   "tags": [],
   "style": "dark",
   "timezone": "browser",
   "editable": true,
+  "hideControls": false,
   "rows": [
     {
       "title": "Memory and CPU",
@@ -88,14 +91,15 @@
             }
           ],
           "aliasColors": {},
-          "aliasYAxis": {},
           "title": "JVM Heap Memory",
           "datasource": null,
           "renderer": "flot",
           "annotate": {
             "enable": false
           },
-          "leftYAxisLabel": ""
+          "leftYAxisLabel": "",
+          "id": 1,
+          "seriesOverrides": []
         },
         {
           "span": 4,
@@ -166,10 +170,11 @@
             }
           ],
           "aliasColors": {},
-          "aliasYAxis": {},
           "title": "Server Memory",
           "leftYAxisLabel": "",
-          "rightYAxisLabel": ""
+          "rightYAxisLabel": "",
+          "id": 2,
+          "seriesOverrides": []
         },
         {
           "span": 4,
@@ -234,11 +239,15 @@
             },
             {
               "target": "alias(stats.gauges.logstash.NodeX.Alfresco.CPU.UserCPU,'User CPU')"
+            },
+            {
+              "target": "alias(stats.gauges.logstash.NodeX.Alfresco.CPU.IdleCPU, 'Idle CPU')"
             }
           ],
           "aliasColors": {},
-          "aliasYAxis": {},
-          "title": "% CPU Usage"
+          "title": "% CPU Usage",
+          "id": 3,
+          "seriesOverrides": []
         }
       ],
       "notice": false
@@ -323,7 +332,6 @@
             }
           ],
           "aliasColors": {},
-          "aliasYAxis": {},
           "title": "Solr Transactions",
           "datasource": null,
           "renderer": "flot",
@@ -331,7 +339,9 @@
             "enable": false
           },
           "leftYAxisLabel": "",
-          "rightYAxisLabel": ""
+          "rightYAxisLabel": "",
+          "id": 4,
+          "seriesOverrides": []
         },
         {
           "span": 4,
@@ -402,9 +412,10 @@
             }
           ],
           "aliasColors": {},
-          "aliasYAxis": {},
           "title": "Solr Acls",
-          "leftYAxisLabel": ""
+          "leftYAxisLabel": "",
+          "id": 5,
+          "seriesOverrides": []
         },
         {
           "span": 4,
@@ -475,8 +486,9 @@
             }
           ],
           "aliasColors": {},
-          "aliasYAxis": {},
-          "title": "Solr Documents"
+          "title": "Solr Documents",
+          "id": 6,
+          "seriesOverrides": []
         }
       ],
       "notice": false
@@ -551,9 +563,10 @@
             }
           ],
           "aliasColors": {},
-          "aliasYAxis": {},
           "title": "Solr Search Handlers Avg Response Time",
-          "leftYAxisLabel": ""
+          "leftYAxisLabel": "",
+          "id": 7,
+          "seriesOverrides": []
         },
         {
           "span": 4,
@@ -618,8 +631,9 @@
             }
           ],
           "aliasColors": {},
-          "aliasYAxis": {},
-          "title": "Concurrent Users/Tickets"
+          "title": "Concurrent Users/Tickets",
+          "id": 8,
+          "seriesOverrides": []
         },
         {
           "span": 4,
@@ -690,8 +704,9 @@
             }
           ],
           "aliasColors": {},
-          "aliasYAxis": {},
-          "title": "Tomcat Threads"
+          "title": "Tomcat Threads",
+          "id": 9,
+          "seriesOverrides": []
         }
       ],
       "notice": false
@@ -762,9 +777,10 @@
             }
           ],
           "aliasColors": {},
-          "aliasYAxis": {},
           "title": "Disk IO",
-          "leftYAxisLabel": "KBs / Second"
+          "leftYAxisLabel": "KBs / Second",
+          "id": 10,
+          "seriesOverrides": []
         },
         {
           "span": 4,
@@ -823,9 +839,10 @@
             }
           ],
           "aliasColors": {},
-          "aliasYAxis": {},
           "title": "Alfresco Open File Handles",
-          "leftYAxisLabel": ""
+          "leftYAxisLabel": "",
+          "id": 11,
+          "seriesOverrides": []
         },
         {
           "span": 4,
@@ -890,22 +907,11 @@
             }
           ],
           "aliasColors": {},
-          "aliasYAxis": {},
-          "title": "DB Pool"
+          "title": "DB Pool",
+          "id": 12,
+          "seriesOverrides": []
         }
       ]
-    }
-  ],
-  "pulldowns": [
-    {
-      "type": "filtering",
-      "collapse": false,
-      "notice": false,
-      "enable": false
-    },
-    {
-      "type": "annotations",
-      "enable": false
     }
   ],
   "nav": [
@@ -944,13 +950,16 @@
     }
   ],
   "time": {
-    "from": "now-12h",
+    "from": "now- 1h",
     "to": "now"
   },
   "templating": {
-    "list": []
+    "list": [],
+    "enable": false
   },
-  "refresh": "1m",
-  "version": 2,
-  "refresh_timer": {}
+  "annotations": {
+    "enable": false
+  },
+  "refresh": "30s",
+  "version": 6
 }

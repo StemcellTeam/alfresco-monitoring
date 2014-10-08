@@ -113,7 +113,7 @@ Icinga web application is available at [http://alfrescoMonitor/icinga](http://al
 
 The thresholds for the commands and Alfresco paths are defined in ```/etc/icinga/objects/alfresco-<node name>.cfg``` file. You will need to adjust these values to meet your application requirements.
 
-Edit /etc/icinga/icinga.cfg and set the email address for the notification; the default one is icinga@localhost. Then edit /etc/ssmtp/ssmtp.cf and configure the mail options for external emails. 
+Edit /etc/icinga/icinga.cfg and set the email address for notifications; the default one is icinga@localhost. Then edit /etc/ssmtp/ssmtp.cf and configure the mail options for external emails. 
 
 Alfresco Monitoring URLs
 ------------------------
@@ -122,4 +122,5 @@ Finally bookmark your URLs for quick access:
 - [http://alfrescoMonitor/kibana](http://alfrescoMonitor/kibana)
 - [http://alfrescoMonitor/granfa](http://alfrescoMonitor/granfa)
 - [http://alfrescoMonitor/icinga](http://alfrescoMonitor/icinga)
+
 
