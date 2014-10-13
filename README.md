@@ -91,6 +91,26 @@ Next click on the "Save" icon and save the dashboard as "Alfresco"
 
 Now when you click on the "Load" icon the "Alfresco" dashboard will be avaible for your. You can also set this dashboard as the home dashboard (Save->Advanced->Save as Home) so it is loaded automatically when you enter kibana.
 
+You can also load "Alfresco-Transactions" dashboard to Kibana. This dashboard is used to monitor transactions such as CREATE, READ, UPDATE, CHECK-IN, CHECK-OUT, SEARCH. This dashboard takes input from Alfresco audit entries and Solr searches debugging so the following configuration is required in Alfresco.
+
+- Edit ```alfresco-global.properties``` file and add the following entries to enable auditing.
+
+```
+audit.enabled=true
+audit.alfresco-access.enabled=true
+audit.tagging.enabled=true
+audit.alfresco-access.sub-actions.enabled=true
+audit.cmischangelog.enabled=true
+```
+
+Then add the following entry to Alfresco's ```log4j.properties``` file:
+
+```
+log4j.logger.org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient=debug
+```
+
+Restart Alfresco application for these two changes to take effect.
+
 Setting up grafana
 ------------------
 

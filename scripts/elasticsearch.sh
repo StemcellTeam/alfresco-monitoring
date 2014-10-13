@@ -10,7 +10,8 @@ chkconfig elasticsearch on
 /bin/cp elasticsearch.yml /etc/elasticsearch/
 mkdir /usr/local/elasticsearch/maintenance
 /bin/cp /tmp/elasticsearch-remove-old-indices.sh /usr/local/elasticsearch/maintenance/
-echo "00 4 * * * root /usr/local/elasticsearch/maintenance/elasticsearch-remove-old-indices.sh" >> /etc/crontab
+echo "00 4 * * * root /usr/share/elasticsearch/bin//maintenance/elasticsearch-remove-old-indices.sh" >> /etc/crontab
+/bin/cp /tmp/elasticsearch-remove-old-indices.sh /usr/share/elasticsearch/bin/
 
 #Install Logstash
 cd /tmp
