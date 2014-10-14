@@ -29,7 +29,7 @@
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +\"sub-actions\" +\"readContent updateNodeProperties\""
+          "query": "+tags:audit +\"action\\\":\\\"UPDATE CONTENT\\\"\""
         },
         "2": {
           "id": 2,
@@ -43,11 +43,11 @@
         "3": {
           "id": 3,
           "color": "#7EB26D",
-          "alias": "Read",
+          "alias": "Read Content",
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +\"action\\\":\\\"READ\\\"\" -\"action\\\":\\\"readContent\\\"\""
+          "query": "+tags:audit +\"action\\\":\\\"READ\\\"\""
         },
         "4": {
           "id": 4,
@@ -60,7 +60,7 @@
         },
         "5": {
           "id": 5,
-          "color": "#3F6833",
+          "color": "#F29191",
           "alias": "CheckOut",
           "pin": true,
           "type": "lucene",
@@ -83,7 +83,16 @@
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "(+tags:audit +\"action:\\\"DELETE\\\"\") OR (+tags:audit +\"sub-actions\" +\"readContent updateNodeProperties\") OR (+tags:audit +\"action\\\":\\\"READ\\\"\" -\"action\\\":\\\"readContent\\\"\") OR (+tags:audit +\"action:\\\"CHECK OUT\\\"\") OR (+tags:audit +\"action:\\\"CHECK IN\\\"\") OR (+tags:audit +\"action:\\\"CREATE\\\"\") OR (+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\")"
+          "query": "(+tags:audit +(\"action:\\\"CREATE\\\"\" OR \"action:\\\"DELETE\\\"\" OR \"action\\\":\\\"READ\\\"\" OR \"action\\\":\\\"readContent\\\"\" OR \"action:\\\"CHECK OUT\\\"\" OR \"action:\\\"CHECK IN\\\"\" OR \"action\\\":\\\"UPDATE CONTENT\\\"\")) OR (+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\")"
+        },
+        "8": {
+          "id": 8,
+          "color": "#508642",
+          "alias": "Read Metadata",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "+tags:audit +\"action\\\":\\\"readContent\\\"\""
         },
         "11": {
           "id": 11,
@@ -104,6 +113,7 @@
         5,
         6,
         7,
+        8,
         11
       ]
     },
@@ -159,6 +169,7 @@
               4,
               5,
               6,
+              8,
               11
             ]
           },
@@ -173,9 +184,9 @@
             ]
           },
           "value_field": null,
-          "auto_int": false,
+          "auto_int": true,
           "resolution": 100,
-          "interval": "1m",
+          "interval": "30s",
           "intervals": [
             "auto",
             "1s",
@@ -264,9 +275,9 @@
               "desc"
             ]
           },
-          "auto_int": false,
+          "auto_int": true,
           "resolution": 100,
-          "interval": "1m",
+          "interval": "30s",
           "intervals": [
             "auto",
             "1s",
@@ -381,15 +392,15 @@
       "pinned": true,
       "history": [
         "+tags:audit +\"action:\\\"CREATE\\\"\"",
-        "(+tags:audit +\"action:\\\"DELETE\\\"\") OR (+tags:audit +\"sub-actions\" +\"readContent updateNodeProperties\") OR (+tags:audit +\"action\\\":\\\"READ\\\"\" -\"action\\\":\\\"readContent\\\"\") OR (+tags:audit +\"action:\\\"CHECK OUT\\\"\") OR (+tags:audit +\"action:\\\"CHECK IN\\\"\") OR (+tags:audit +\"action:\\\"CREATE\\\"\") OR (+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\")",
+        "+tags:audit +\"action\\\":\\\"readContent\\\"\"",
+        "(+tags:audit +(\"action:\\\"CREATE\\\"\" OR \"action:\\\"DELETE\\\"\" OR \"action\\\":\\\"READ\\\"\" OR \"action\\\":\\\"readContent\\\"\" OR \"action:\\\"CHECK OUT\\\"\" OR \"action:\\\"CHECK IN\\\"\" OR \"action\\\":\\\"UPDATE CONTENT\\\"\")) OR (+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\")",
         "+tags:audit +\"action:\\\"CHECK IN\\\"\"",
         "+tags:audit +\"action:\\\"CHECK OUT\\\"\"",
         "+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\"",
-        "+tags:audit +\"action\\\":\\\"READ\\\"\" -\"action\\\":\\\"readContent\\\"\"",
+        "+tags:audit +\"action\\\":\\\"READ\\\"\"",
         "",
-        "+tags:audit +\"sub-actions\" +\"readContent updateNodeProperties\"",
-        "+tags:audit +\"action:\\\"DELETE\\\"\"",
-        "+tags:SolrQuery -\"Got:\""
+        "+tags:audit +\"action\\\":\\\"UPDATE CONTENT\\\"\"",
+        "+tags:audit +\"action:\\\"DELETE\\\"\""
       ],
       "remember": 10
     },
