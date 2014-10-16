@@ -1,12 +1,4 @@
 {
-  "variables": {
-    "ssh_host": "",
-    "ssh_username": "",
-    "ssh_password": "",
-    "ssh_elasticsearch": "",
-    "ssh_graphite": "",
-    "ssh_icinga": ""
-  },
   "provisioners": [
     {
       "type": "shell",
@@ -14,10 +6,13 @@
       "sudo -S yum -y install wget",
       "wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm",
       "sudo -S rpm -Uvh epel-release-6*.rpm",
-      "sudo -S yum -y install sshpass",
-      "sshpass -p {{user `ssh_password`}} scp -o 'StrictHostKeyChecking no' {{user `ssh_username`}}@{{user `ssh_host`}}:{{user `ssh_elasticsearch`}}/* /tmp",
-      "sshpass -p {{user `ssh_password`}} scp -o 'StrictHostKeyChecking no' {{user `ssh_username`}}@{{user `ssh_host`}}:{{user `ssh_graphite`}}/* /tmp",
-      "sshpass -p {{user `ssh_password`}} scp -o 'StrictHostKeyChecking no' {{user `ssh_username`}}@{{user `ssh_host`}}:{{user `ssh_icinga`}}/* /tmp"
+      "cd /tmp",
+      "sudo -S yum -y install zip unzip",
+      "echo",
+      "echo Downloading software...please be patient",
+      "echo",
+      "wget https://github.com/miguel-rodriguez/alfresco-monitoring/archive/master.zip",
+      "unzip master.zip"
       ]
     },
     {

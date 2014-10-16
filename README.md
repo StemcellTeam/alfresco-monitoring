@@ -4,12 +4,12 @@
 What is it?
 -----------
 
-This project is a solution to monitor Alfresco software (http://www.alfresco.com/) with Open Source tools. 
+This project is a solution to monitor Alfresco software (http://www.alfresco.com/) with OpenSource tools. 
 Note that these tools can be used to monitor most software i.e. a database server, so we can use them to monitor the solution not just one application.
 
 These tools have been configured to run on Linux servers only. Work will be done in a near future to have this monitoring solution running on Windows OS too.
 
-The Open Source tools used are:
+The OpenSource tools used are:
 
 - Logstash - for collecting/tailing log files and output from custom commands and pushing data to ElasticSearch and Graphite.
 - ElasticSearch - Lucene engine to index content.
@@ -25,22 +25,9 @@ This project uses packer (http://www.packer.io/) software to build a virtual mac
 
 First install packer on your local computer and the software to run your virtual machine i.e. VirtualBox, VMWare, QEMU, etc.
 
-Edit the ```monitoring_variables.json``` file to provision it with the details for the host, username, password and paths to the software packages provided in the project (elasticsearch, graphite and icinga). Personally I leave them on my local computer and provision the ```monitoring_variables.json``` file with the login details to my computer, for example:
-
-```
-{
-    "ssh_host": "xxx.xxx.xxx.xxx",
-    "ssh_username": "my_username",
-    "ssh_password": "my_password",
-    "ssh_elasticsearch": "/opt/alfresco-monitoring/elasticsearch_software_packages",
-    "ssh_graphite": "/opt/alfresco-monitoring/graphite_software_packages",
-    "ssh_icinga": "/opt/alfresco-monitoring/icinga_software_packages"
- }
-``` 
-
 Then use the packer command to build the Virtual Machine and install the software. For example to build a VirtualBox appliance use:
 
-```# packer build -var-file=monitoring_variables.json -only virtualbox-iso monitoring_template.json```
+```# packer build -only virtualbox-iso monitoring_template.json```
 
 This command will launch VirtualBox, download the ISO file for Centos 6.5, install it based on the ```http/ks.cfg``` file and run the shell scripts under the scripts directory as specified in the ```monitoring_template.json``` template file.
 
@@ -54,8 +41,19 @@ Post-Installation
 - Run the virtual machine and login using alfresco/alfresco as the username/password
 - Run "sudo su" to become root user. Edit ```/etc/hosts``` file and add the IP and hostname for the virtual machine i.e.
     ```
-    10.123.12.123 alfrescoMonitor
+    192.168.1.10 alfrescoMonitor
     ```
+
+Please note that this IP address should be in the same network as Alfresco's nodes IP addresses as they need to be able to communicate between them. 
+- Edit ```/etc/sysconfig/network-scripts/ifcfg-eth0``` and assign the same IP address to this interface i.e.
+```
+DEVICE=eth0
+BOOTPROTO=static
+IPADDR=192.168.1.10
+NETMASK=255.255.255.0
+ONBOOT=yes
+USERCTL=yes
+```
 - Also add the IP address and the hostname of your Alfresco nodes to this file.
 - Add your Alfresco host details to Icinga ```/etc/icinga/icinga.cfg``` (bottom of the file)
 - And create a new commands file for each host in ```/etc/icinga/objects``` using alfresco-NodeX.cfg as a template, just replace "NodeX" with the hostname of your Alfresco node.
@@ -142,5 +140,3 @@ Finally bookmark your URLs for quick access:
 - [http://alfrescoMonitor/kibana](http://alfrescoMonitor/kibana)
 - [http://alfrescoMonitor/granfa](http://alfrescoMonitor/granfa)
 - [http://alfrescoMonitor/icinga](http://alfrescoMonitor/icinga)
-
-
