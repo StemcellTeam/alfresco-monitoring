@@ -9,10 +9,8 @@ rpm -ivh ./elasticsearch-1.3.2.noarch.rpm
 chkconfig --add elasticsearch
 chkconfig elasticsearch on
 /bin/cp elasticsearch.yml /etc/elasticsearch/
-mkdir /usr/local/elasticsearch/maintenance
-/bin/cp /tmp/alfresco-monitoring-master/elasticsearch_software_packages/elasticsearch-remove-old-indices.sh /usr/local/elasticsearch/maintenance/
-echo "00 4 * * * root /usr/share/elasticsearch/bin//maintenance/elasticsearch-remove-old-indices.sh" >> /etc/crontab
-/bin/cp /tmp/elasticsearch-remove-old-indices.sh /usr/share/elasticsearch/bin/
+echo "00 4 * * * root /usr/share/elasticsearch/bin/elasticsearch-remove-old-indices.sh" >> /etc/crontab
+/bin/cp /tmp/alfresco-monitoring-master/elasticsearch_software_packages/elasticsearch-remove-old-indices.sh /usr/share/elasticsearch/bin/
 
 #Install Logstash
 cd /tmp/elasticsearch_software_packages
