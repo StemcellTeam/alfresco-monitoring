@@ -11,6 +11,7 @@ chkconfig elasticsearch on
 /bin/cp elasticsearch.yml /etc/elasticsearch/
 echo "00 4 * * * root /usr/share/elasticsearch/bin/elasticsearch-remove-old-indices.sh" >> /etc/crontab
 /bin/cp /tmp/alfresco-monitoring-master/elasticsearch_software_packages/elasticsearch-remove-old-indices.sh /usr/share/elasticsearch/bin/
+chmod +x /usr/share/elasticsearch/bin/elasticsearch-remove-old-indices.sh
 
 #Install Logstash
 cd /tmp/elasticsearch_software_packages
