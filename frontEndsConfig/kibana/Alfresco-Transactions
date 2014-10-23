@@ -16,20 +16,20 @@
         "0": {
           "id": 0,
           "color": "#890F02",
-          "alias": "Delete",
+          "alias": "DELETE",
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +\"action:\\\"DELETE\\\"\""
+          "query": "+tags:audit +\"action=DELETE\""
         },
         "1": {
           "id": 1,
           "color": "#EAB839",
-          "alias": "Update",
+          "alias": "UPDATE",
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +\"action\\\":\\\"UPDATE CONTENT\\\"\""
+          "query": "+tags:audit +(\"action=UPDATE CONTENT\" OR \"action=updateNodeProperties\" OR \"action=addNodeAspect\" OR \"action=deleteNodeAspect\")"
         },
         "2": {
           "id": 2,
@@ -43,16 +43,16 @@
         "3": {
           "id": 3,
           "color": "#7EB26D",
-          "alias": "Read Content",
+          "alias": "READ CONTENT",
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +\"action\\\":\\\"READ\\\"\""
+          "query": "+tags:audit +\"action=READ\""
         },
         "4": {
           "id": 4,
           "color": "#82B5D8",
-          "alias": "Query",
+          "alias": "QUERY",
           "pin": true,
           "type": "lucene",
           "enable": true,
@@ -61,47 +61,65 @@
         "5": {
           "id": 5,
           "color": "#F29191",
-          "alias": "CheckOut",
+          "alias": "CHECK OUT",
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +\"action:\\\"CHECK OUT\\\"\""
+          "query": "+tags:audit +\"action=CHECK OUT\""
         },
         "6": {
           "id": 6,
           "color": "#BA43A9",
-          "alias": "CheckIn",
+          "alias": "CHECK IN",
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +\"action:\\\"CHECK IN\\\"\""
+          "query": "+tags:audit +\"action=CHECK IN\""
         },
         "7": {
           "id": 7,
           "color": "#705DA0",
-          "alias": "Total Transactions",
+          "alias": "TOTAL TRANSACTIONS",
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "(+tags:audit +(\"action:\\\"CREATE\\\"\" OR \"action:\\\"DELETE\\\"\" OR \"action\\\":\\\"READ\\\"\" OR \"action\\\":\\\"readContent\\\"\" OR \"action:\\\"CHECK OUT\\\"\" OR \"action:\\\"CHECK IN\\\"\" OR \"action\\\":\\\"UPDATE CONTENT\\\"\")) OR (+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\")"
+          "query": "(+tags:audit +(\"action=CREATE\" OR \"action=DELETE\" OR \"action=READ\" OR \"action=readContent\" OR \"action=CHECK OUT\" OR \"action=CHECK IN\" OR \"action=UPDATE CONTENT\" OR \"action=updateNodeProperties\" OR \"action=addNodeAspect\" OR \"action=deleteNodeAspect\" OR \"action=COPY\" OR \"action=MOVE\")) OR (+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\")"
         },
         "8": {
           "id": 8,
           "color": "#508642",
-          "alias": "Read Metadata",
+          "alias": "READ METADATA",
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +\"action\\\":\\\"readContent\\\"\""
+          "query": "+tags:audit +\"action=readContent\""
+        },
+        "9": {
+          "id": 9,
+          "color": "#F2C96D",
+          "alias": "COPY",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "+tags:audit +\"action=COPY\""
+        },
+        "10": {
+          "id": 10,
+          "color": "#967302",
+          "alias": "MOVE",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "+tags:audit +\"action=MOVE\""
         },
         "11": {
           "id": 11,
           "color": "#C15C17",
-          "alias": "Create",
+          "alias": "CREATE",
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +\"action:\\\"CREATE\\\"\""
+          "query": "+tags:audit +\"action=CREATE\""
         }
       },
       "ids": [
@@ -114,6 +132,8 @@
         6,
         7,
         8,
+        9,
+        10,
         11
       ]
     },
@@ -170,6 +190,8 @@
               5,
               6,
               8,
+              9,
+              10,
               11
             ]
           },
@@ -320,6 +342,102 @@
       "notice": false
     },
     {
+      "title": "Operations",
+      "height": "150px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 4,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "field": "Operation",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "below",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              8,
+              9,
+              10,
+              11
+            ]
+          },
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": "",
+          "title": "Operations"
+        },
+        {
+          "error": false,
+          "span": 4,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "field": "User",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "below",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              8,
+              9,
+              10,
+              11
+            ]
+          },
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": "",
+          "title": "USERS"
+        }
+      ],
+      "notice": false
+    },
+    {
       "title": "Search Results",
       "height": "150px",
       "editable": true,
@@ -391,16 +509,16 @@
       "query": "*",
       "pinned": true,
       "history": [
-        "+tags:audit +\"action:\\\"CREATE\\\"\"",
-        "+tags:audit +\"action\\\":\\\"readContent\\\"\"",
-        "(+tags:audit +(\"action:\\\"CREATE\\\"\" OR \"action:\\\"DELETE\\\"\" OR \"action\\\":\\\"READ\\\"\" OR \"action\\\":\\\"readContent\\\"\" OR \"action:\\\"CHECK OUT\\\"\" OR \"action:\\\"CHECK IN\\\"\" OR \"action\\\":\\\"UPDATE CONTENT\\\"\")) OR (+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\")",
-        "+tags:audit +\"action:\\\"CHECK IN\\\"\"",
-        "+tags:audit +\"action:\\\"CHECK OUT\\\"\"",
+        "+tags:audit +\"action=CREATE\"",
+        "+tags:audit +\"action=MOVE\"",
+        "+tags:audit +\"action=COPY\"",
+        "+tags:audit +\"action=readContent\"",
+        "(+tags:audit +(\"action=CREATE\" OR \"action=DELETE\" OR \"action=READ\" OR \"action=readContent\" OR \"action=CHECK OUT\" OR \"action=CHECK IN\" OR \"action=UPDATE CONTENT\" OR \"action=updateNodeProperties\" OR \"action=addNodeAspect\" OR \"action=deleteNodeAspect\" OR \"action=COPY\" OR \"action=MOVE\")) OR (+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\")",
+        "+tags:audit +\"action=CHECK IN\"",
+        "+tags:audit +\"action=CHECK OUT\"",
         "+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\"",
-        "+tags:audit +\"action\\\":\\\"READ\\\"\"",
-        "",
-        "+tags:audit +\"action\\\":\\\"UPDATE CONTENT\\\"\"",
-        "+tags:audit +\"action:\\\"DELETE\\\"\""
+        "+tags:audit +\"action=READ\"",
+        ""
       ],
       "remember": 10
     },

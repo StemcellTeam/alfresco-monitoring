@@ -7,7 +7,7 @@ What is it?
 This project is a solution to monitor Alfresco software (http://www.alfresco.com/) with OpenSource tools. 
 Note that these tools can be used to monitor most software i.e. a database server, so we can use them to monitor the solution not just one application.
 
-These tools have been configured to run on Linux servers only. Work will be done in a near future to have this monitoring solution running on Windows OS too.
+These tools have been configured to run on Linux servers only so if you are going to run the on a different Operating System you may have to make some changes.
 
 The OpenSource tools used are:
 
@@ -107,7 +107,17 @@ Then add the following entry to Alfresco's ```log4j.properties``` file:
 log4j.logger.org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient=debug
 ```
 
-Restart Alfresco application for these two changes to take effect.
+Restart Alfresco application for these two changes to take effect. Please note that the ```logstash-elasticsearch/audit.sh``` script should be run only from one of the Alfresco nodes so you should comment out these entries in the ```logstash-elasticsearch/run_logstash.sh``` file on the other nodes:
+
+```
+  nohup ./audit.sh 1>audit.log &>audit.log &
+```
+
+and 
+
+```
+  ps -ef | grep "/bin/sh ./audit.sh" | grep -v grep | awk '{print $2}' | xargs -I {} kill -9 {}
+```
 
 Setting up grafana
 ------------------
