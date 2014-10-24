@@ -1,4 +1,4 @@
-#Script to get the audit events
+#Script to get audit access events
 sleepTime=30
 
 auditRoot=/opt/alfresco
@@ -6,8 +6,8 @@ auditRoot=/opt/alfresco
 while [ 1 ]
 do
   now=`date +"%Y-%m-%d-%T"`
-  auditLog=./audit-access-${now}.log
-  parsedAuditLog=./audit-access-${now}.parsed
+  auditLog=./auditLog/audit-access-${now}.log
+  parsedAuditLog=audit-access-${now}.parsed
   touch $auditLog
   fromTime=`date +"%s" -d -60seconds`000
 
@@ -28,10 +28,10 @@ do
   #Process the audit file
   java -jar ParseAuditFile.jar $auditLog > $auditRoot/$parsedAuditLog
   #Delete files older than 30 minutes
-  find . -name "audit-access*.log" -type f -maxdepth 1 -mmin +30 -delete
+  find auditLog -name "audit-access-*.log" -type f -maxdepth 1 -mmin +30 -delete
 
   #Siesta time
   sleep $sleepTime
   #Delete files older than 30 minutes
-  find $auditRoot/ -name "audit-access*.parsed" -type f -maxdepth 1 -mmin +30 -delete
+  find $auditRoot/ -name "audit-access-*.parsed" -type f -maxdepth 1 -mmin +30 -delete
 done
