@@ -165,7 +165,7 @@ Restart NGINX after this changes. Make sure ```logstash-elasticsearch/logstash.c
 
 Setting up Tomcat access logs
 -----------------------------
-If you want to Tomcat HTTP response times and display the data in Kibana (Alfresco-Transactions dashboard) you need to edit tomcat/conf/server.xml file and enable access logging settings i.e.:
+If you want to monitor Tomcat HTTP response times and display the data in Kibana (Alfresco-Transactions dashboard) you need to edit tomcat/conf/server.xml file and enable access logging settings i.e.:
 
 ```
         <!-- Access logs -->
