@@ -165,7 +165,7 @@ Restart NGINX after this changes. Make sure ```logstash-elasticsearch/logstash.c
 
 Setting up Tomcat access logs
 -----------------------------
-If you want to monitor Tomcat HTTP response times and display the data in Kibana (Alfresco-Transactions dashboard) you need to edit tomcat/conf/server.xml file and enable access logging settings i.e.:
+If you want to monitor Tomcat HTTP response times and display the data in Kibana (Alfresco-Transactions dashboard) you need to edit ```tomcat/conf/server.xml``` file and enable access logging settings i.e.:
 
 ```
         <!-- Access logs -->
@@ -176,6 +176,21 @@ If you want to monitor Tomcat HTTP response times and display the data in Kibana
 ```
 
 Restart Tomcat after this changes. Make sure ```logstash-elasticsearch/logstash.conf``` is pointing to the correct path for Tomcat access log.
+
+Setting up Postgres logs
+------------------------
+If you want to monitor Postgres statements execution time and display the data in Kibana (Alfresco-Transactions dashboard) you need to edit ```postgres.conf``` file and enable logging to csv format. You can use the following configuration to produce logs in the correct format.
+
+```
+logging_collector = on
+log_destination = 'csvlog'
+log_line_prefix = '%t [%p]: [%l-1] user=%u-%h,db=%d '
+log_directory = 'pg_log'
+log_rotation_age = 1d
+log_rotation_size = 10MB
+log_min_duration_statement = 10
+```
+Restart Postgres after this change. Make sure ```logstash-elasticsearch/logstash.conf``` is pointing to the correct path for Postgres logs.
 
 Alfresco Monitoring URLs
 ------------------------

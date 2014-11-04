@@ -20,7 +20,7 @@
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +Operation:DELETE"
+          "query": "+tags:audit +AuditOperation:DELETE"
         },
         "1": {
           "id": 1,
@@ -29,7 +29,7 @@
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +Operation:UPDATE"
+          "query": "+tags:audit +AuditOperation:UPDATE"
         },
         "2": {
           "id": 2,
@@ -47,12 +47,12 @@
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +Operation:\"READ CONTENT\""
+          "query": "+tags:audit +AuditOperation:\"READ CONTENT\""
         },
         "4": {
           "id": 4,
           "color": "#82B5D8",
-          "alias": "QUERY",
+          "alias": "SOLR QUERY",
           "pin": true,
           "type": "lucene",
           "enable": true,
@@ -65,7 +65,7 @@
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +Operation:\"CHECK OUT\""
+          "query": "+tags:audit +AuditOperation:\"CHECK OUT\""
         },
         "6": {
           "id": 6,
@@ -74,7 +74,7 @@
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +Operation:\"CHECK IN\""
+          "query": "+tags:audit +AuditOperation:\"CHECK IN\""
         },
         "7": {
           "id": 7,
@@ -83,7 +83,7 @@
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "(+tags:audit +(Operation:CREATE OR Operation:DELETE OR Operation:\"READ CONTENT\" OR Operation:\"READ METADATA\" OR Operation:\"CHECK OUT\" OR Operation:\"CHECK IN\" OR Operation:UPDATE OR Operation:COPY OR Operation:MOVE)) OR (+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\")"
+          "query": "(+tags:audit +(AuditOperation:CREATE OR AuditOperation:DELETE OR AuditOperation:\"READ CONTENT\" OR AuditOperation:\"READ METADATA\" OR AuditOperation:\"CHECK OUT\" OR AuditOperation:\"CHECK IN\" OR AuditOperation:UPDATE OR AuditOperation:COPY OR AuditOperation:MOVE)) OR (+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\")"
         },
         "8": {
           "id": 8,
@@ -92,7 +92,7 @@
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +Operation:\"READ METADATA\""
+          "query": "+tags:audit +AuditOperation:\"READ METADATA\""
         },
         "9": {
           "id": 9,
@@ -101,7 +101,7 @@
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +Operation:COPY"
+          "query": "+tags:audit +AuditOperation:COPY"
         },
         "10": {
           "id": 10,
@@ -110,7 +110,7 @@
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +Operation:MOVE"
+          "query": "+tags:audit +AuditOperation:MOVE"
         },
         "11": {
           "id": 11,
@@ -119,16 +119,34 @@
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "+tags:audit +Operation:CREATE"
+          "query": "+tags:audit +AuditOperation:CREATE"
         },
         "12": {
           "id": 12,
           "color": "#DEDAF7",
-          "alias": "HTTP Requests",
+          "alias": "HTTP EXECUTION TIME",
           "pin": true,
           "type": "lucene",
           "enable": true,
           "query": "type:nginx OR type:TomcatAccessLog"
+        },
+        "13": {
+          "id": 13,
+          "color": "#E0752D",
+          "alias": "SOLR EXECUTION TIME",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"Got:\""
+        },
+        "14": {
+          "id": 14,
+          "color": "#E5AC0E",
+          "alias": "POSTGRES EXECUTION TIME",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "+type:postgres"
         }
       },
       "ids": [
@@ -144,7 +162,9 @@
         9,
         10,
         11,
-        12
+        12,
+        13,
+        14
       ]
     },
     "filter": {
@@ -177,7 +197,7 @@
   },
   "rows": [
     {
-      "title": "Histogram",
+      "title": "TRANSACTIONS COUNT BY TYPE",
       "height": "150px",
       "editable": true,
       "collapse": false,
@@ -262,14 +282,14 @@
             "max": null,
             "min": 0
           },
-          "title": "Histogram",
+          "title": "TRANSACTIONS COUNT BY TYPE",
           "y_format": "none"
         }
       ],
       "notice": false
     },
     {
-      "title": "Total Transactions",
+      "title": "TOTAL TRANSACTIONS COUNT",
       "height": "150px",
       "editable": true,
       "collapse": false,
@@ -346,13 +366,13 @@
             "value_type": "cumulative",
             "query_as_alias": true
           },
-          "title": "Total Transactions"
+          "title": "TOTAL TRANSACTIONS COUNT"
         }
       ],
       "notice": false
     },
     {
-      "title": "Operations",
+      "title": "TRANSACTIONS TABLE",
       "height": "150px",
       "editable": true,
       "collapse": true,
@@ -364,7 +384,7 @@
           "editable": true,
           "type": "terms",
           "loadingEditor": false,
-          "field": "Operation",
+          "field": "AuditOperation",
           "exclude": [],
           "missing": false,
           "other": false,
@@ -377,7 +397,7 @@
           "tilt": false,
           "labels": true,
           "arrangement": "horizontal",
-          "chart": "pie",
+          "chart": "table",
           "counter_pos": "below",
           "spyable": true,
           "queries": {
@@ -399,7 +419,7 @@
           "tmode": "terms",
           "tstat": "total",
           "valuefield": "",
-          "title": "Operations"
+          "title": "TRANSACTIONS COUNT BY TYPE"
         },
         {
           "error": false,
@@ -407,7 +427,7 @@
           "editable": true,
           "type": "terms",
           "loadingEditor": false,
-          "field": "User",
+          "field": "AuditUser",
           "exclude": [],
           "missing": false,
           "other": false,
@@ -420,7 +440,7 @@
           "tilt": false,
           "labels": true,
           "arrangement": "horizontal",
-          "chart": "pie",
+          "chart": "table",
           "counter_pos": "below",
           "spyable": true,
           "queries": {
@@ -448,7 +468,7 @@
       "notice": false
     },
     {
-      "title": "HTTP Requests",
+      "title": "HTTP EXECUTION TIMES",
       "height": "150px",
       "editable": true,
       "collapse": false,
@@ -506,8 +526,8 @@
           "lines": true,
           "fill": 1,
           "linewidth": 1,
-          "points": false,
-          "pointradius": 5,
+          "points": true,
+          "pointradius": 1,
           "bars": false,
           "stack": false,
           "spyable": true,
@@ -525,14 +545,14 @@
             "value_type": "individual",
             "query_as_alias": true
           },
-          "title": "HTTP Response Time",
+          "title": "HTTP EXECUTION TIMES",
           "scaleSeconds": false
         }
       ],
       "notice": false
     },
     {
-      "title": "HTTP Request Table",
+      "title": "HTTP EXECUTION TIMES TABLE",
       "height": "300px",
       "editable": true,
       "collapse": true,
@@ -577,7 +597,7 @@
             "font-size": "9pt"
           },
           "normTimes": true,
-          "title": "HTTP Response Time"
+          "title": "HTTP EXECUTION BY RESPONSE TIME"
         },
         {
           "error": false,
@@ -598,7 +618,7 @@
           "tilt": false,
           "labels": true,
           "arrangement": "horizontal",
-          "chart": "bar",
+          "chart": "table",
           "counter_pos": "below",
           "spyable": true,
           "queries": {
@@ -611,6 +631,306 @@
           "tstat": "total",
           "valuefield": "",
           "title": "HTTP Response Type"
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "SOLR QUERIES EXECUTION TIMES",
+      "height": "150px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 12,
+          "editable": true,
+          "type": "histogram",
+          "loadingEditor": false,
+          "mode": "max",
+          "time_field": "@timestamp",
+          "value_field": "responseTime",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_format": "none",
+          "grid": {
+            "max": null,
+            "min": 0
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              13
+            ]
+          },
+          "annotate": {
+            "enable": false,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
+            ]
+          },
+          "auto_int": true,
+          "resolution": 100,
+          "interval": "30s",
+          "intervals": [
+            "auto",
+            "1s",
+            "1m",
+            "5m",
+            "10m",
+            "30m",
+            "1h",
+            "3h",
+            "12h",
+            "1d",
+            "1w",
+            "1y"
+          ],
+          "lines": true,
+          "fill": 1,
+          "linewidth": 1,
+          "points": true,
+          "pointradius": 1,
+          "bars": false,
+          "stack": true,
+          "spyable": true,
+          "zoomlinks": true,
+          "options": true,
+          "legend": true,
+          "show_query": true,
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "derivative": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "title": "SOLR QUERIES EXECUTION TIMES"
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "SOLR QUERIES EXECUTION TIMES TABLE",
+      "height": "150px",
+      "editable": true,
+      "collapse": true,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "table",
+          "loadingEditor": false,
+          "size": 10,
+          "pages": 100,
+          "offset": 0,
+          "sort": [
+            "@timestamp",
+            "desc"
+          ],
+          "overflow": "min-height",
+          "fields": [
+            "responseTime",
+            "message"
+          ],
+          "highlight": [],
+          "sortable": true,
+          "header": true,
+          "paging": true,
+          "field_list": false,
+          "all_fields": false,
+          "trimFactor": 300,
+          "localTime": false,
+          "timeField": "@timestamp",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              4,
+              13
+            ]
+          },
+          "style": {
+            "font-size": "9pt"
+          },
+          "normTimes": true,
+          "title": "SOLR QUERIES"
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "POSTGRES STATEMENTS EXECUTION TIMES",
+      "height": "150px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 12,
+          "editable": true,
+          "type": "histogram",
+          "loadingEditor": false,
+          "mode": "max",
+          "time_field": "@timestamp",
+          "value_field": "duration",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_format": "none",
+          "grid": {
+            "max": null,
+            "min": 0
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              14
+            ]
+          },
+          "annotate": {
+            "enable": false,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
+            ]
+          },
+          "auto_int": true,
+          "resolution": 100,
+          "interval": "30s",
+          "intervals": [
+            "auto",
+            "1s",
+            "1m",
+            "5m",
+            "10m",
+            "30m",
+            "1h",
+            "3h",
+            "12h",
+            "1d",
+            "1w",
+            "1y"
+          ],
+          "lines": true,
+          "fill": 1,
+          "linewidth": 1,
+          "points": true,
+          "pointradius": 1,
+          "bars": false,
+          "stack": true,
+          "spyable": true,
+          "zoomlinks": true,
+          "options": true,
+          "legend": true,
+          "show_query": true,
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "derivative": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "title": "POSTGRES STATEMENTS EXECUTION TIMES"
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "POSTGRES STATEMENTS TABLE",
+      "height": "150px",
+      "editable": true,
+      "collapse": true,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 8,
+          "editable": true,
+          "type": "table",
+          "loadingEditor": false,
+          "size": 10,
+          "pages": 10,
+          "offset": 0,
+          "sort": [
+            "duration",
+            "desc"
+          ],
+          "overflow": "min-height",
+          "fields": [
+            "duration",
+            "statement"
+          ],
+          "highlight": [],
+          "sortable": true,
+          "header": true,
+          "paging": true,
+          "field_list": false,
+          "all_fields": false,
+          "trimFactor": 300,
+          "localTime": false,
+          "timeField": "@timestamp",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              14
+            ]
+          },
+          "style": {
+            "font-size": "9pt"
+          },
+          "normTimes": true,
+          "title": "POSTGRES STATEMENTS BY EXECUTION TIME"
+        },
+        {
+          "error": false,
+          "span": 4,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "field": "command_tag",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "table",
+          "counter_pos": "above",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              14
+            ]
+          },
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": "",
+          "title": "POSTGRES STATEMENTS COUNT BY TYPE"
         }
       ],
       "notice": false
@@ -685,18 +1005,18 @@
       "notice": false,
       "enable": true,
       "query": "*",
-      "pinned": true,
+      "pinned": false,
       "history": [
+        "+type:postgres",
+        "+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"Got:\"",
         "type:nginx OR type:TomcatAccessLog",
-        "+tags:audit +Operation:CREATE",
-        "+tags:audit +Operation:MOVE",
-        "+tags:audit +Operation:COPY",
-        "+tags:audit +Operation:\"READ METADATA\"",
+        "+tags:audit +AuditOperation:CREATE",
+        "+tags:audit +AuditOperation:MOVE",
+        "+tags:audit +AuditOperation:COPY",
+        "+tags:audit +AuditOperation:\"READ METADATA\"",
         "(+tags:audit +(Operation:CREATE OR Operation:DELETE OR Operation:\"READ CONTENT\" OR Operation:\"READ METADATA\" OR Operation:\"CHECK OUT\" OR Operation:\"CHECK IN\" OR Operation:UPDATE OR Operation:COPY OR Operation:MOVE)) OR (+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\")",
-        "+tags:audit +Operation:\"CHECK IN\"",
-        "+tags:audit +Operation:\"CHECK OUT\"",
-        "+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\"",
-        "+tags:audit +Operation:\"READ CONTENT\""
+        "+tags:audit +AuditOperation:\"CHECK IN\"",
+        "+tags:audit +AuditOperation:\"CHECK OUT\""
       ],
       "remember": 10
     },
