@@ -1,5 +1,5 @@
 {
-  "title": "Alfresco-Transactions",
+  "title": "Alfresco-Operations",
   "services": {
     "query": {
       "idQueue": [
@@ -79,7 +79,7 @@
         "7": {
           "id": 7,
           "color": "#70DBED",
-          "alias": "TOTAL TRANSACTIONS",
+          "alias": "TOTAL OPERATIONS",
           "pin": true,
           "type": "lucene",
           "enable": true,
@@ -147,6 +147,15 @@
           "type": "lucene",
           "enable": true,
           "query": "+type:postgres"
+        },
+        "15": {
+          "id": 15,
+          "color": "#AEA2E0",
+          "alias": "TRANSFORMATIONS",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "+tags:DEBUG +\"org.alfresco.repo.content.transform.TransformerLog]\""
         }
       },
       "ids": [
@@ -164,7 +173,8 @@
         11,
         12,
         13,
-        14
+        14,
+        15
       ]
     },
     "filter": {
@@ -197,7 +207,7 @@
   },
   "rows": [
     {
-      "title": "TRANSACTIONS COUNT BY TYPE",
+      "title": "OPERATIONS COUNT BY TYPE",
       "height": "150px",
       "editable": true,
       "collapse": false,
@@ -282,14 +292,14 @@
             "max": null,
             "min": 0
           },
-          "title": "TRANSACTIONS COUNT BY TYPE",
+          "title": "OPERATIONS COUNT BY TYPE",
           "y_format": "none"
         }
       ],
       "notice": false
     },
     {
-      "title": "TOTAL TRANSACTIONS COUNT",
+      "title": "TOTAL OPERATIONS COUNT",
       "height": "150px",
       "editable": true,
       "collapse": false,
@@ -366,13 +376,13 @@
             "value_type": "cumulative",
             "query_as_alias": true
           },
-          "title": "TOTAL TRANSACTIONS COUNT"
+          "title": "TOTAL OPERATIONS COUNT"
         }
       ],
       "notice": false
     },
     {
-      "title": "TRANSACTIONS TABLE",
+      "title": "OPERATIONS TABLE",
       "height": "150px",
       "editable": true,
       "collapse": true,
@@ -419,7 +429,7 @@
           "tmode": "terms",
           "tstat": "total",
           "valuefield": "",
-          "title": "TRANSACTIONS COUNT BY TYPE"
+          "title": "OPERATIONS COUNT BY TYPE"
         },
         {
           "error": false,
@@ -740,7 +750,6 @@
           ],
           "overflow": "min-height",
           "fields": [
-            "responseTime",
             "message"
           ],
           "highlight": [],
@@ -936,10 +945,176 @@
       "notice": false
     },
     {
-      "title": "Search Results",
+      "title": "TRANSFORMATIONS",
       "height": "150px",
       "editable": true,
       "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 12,
+          "editable": true,
+          "type": "histogram",
+          "loadingEditor": false,
+          "mode": "max",
+          "time_field": "@timestamp",
+          "value_field": "duration",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_format": "none",
+          "grid": {
+            "max": null,
+            "min": 0
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              15
+            ]
+          },
+          "annotate": {
+            "enable": false,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
+            ]
+          },
+          "auto_int": true,
+          "resolution": 100,
+          "interval": "30s",
+          "intervals": [
+            "auto",
+            "1s",
+            "1m",
+            "5m",
+            "10m",
+            "30m",
+            "1h",
+            "3h",
+            "12h",
+            "1d",
+            "1w",
+            "1y"
+          ],
+          "lines": true,
+          "fill": 1,
+          "linewidth": 1,
+          "points": true,
+          "pointradius": 1,
+          "bars": false,
+          "stack": true,
+          "spyable": true,
+          "zoomlinks": true,
+          "options": true,
+          "legend": true,
+          "show_query": true,
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "derivative": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "title": "TRANSFORMATIONS"
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "TRANSFORMATIONS TABLE",
+      "height": "150px",
+      "editable": true,
+      "collapse": true,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 8,
+          "editable": true,
+          "type": "table",
+          "loadingEditor": false,
+          "size": 10,
+          "pages": 10,
+          "offset": 0,
+          "sort": [
+            "duration",
+            "desc"
+          ],
+          "overflow": "min-height",
+          "fields": [
+            "duration",
+            "message"
+          ],
+          "highlight": [],
+          "sortable": true,
+          "header": true,
+          "paging": true,
+          "field_list": false,
+          "all_fields": false,
+          "trimFactor": 300,
+          "localTime": false,
+          "timeField": "@timestamp",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              15
+            ]
+          },
+          "style": {
+            "font-size": "9pt"
+          },
+          "normTimes": true,
+          "title": "TRANSFORMATIONS BY EXECUTION TIME"
+        },
+        {
+          "error": false,
+          "span": 4,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "field": "transformation",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "table",
+          "counter_pos": "above",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              15
+            ]
+          },
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": "",
+          "title": "TRANSFORMATION TYPE"
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "Search Results",
+      "height": "150px",
+      "editable": true,
+      "collapse": true,
       "collapsable": true,
       "panels": [
         {
@@ -1007,6 +1182,7 @@
       "query": "*",
       "pinned": false,
       "history": [
+        "+tags:DEBUG +\"org.alfresco.repo.content.transform.TransformerLog]\"",
         "+type:postgres",
         "+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"Got:\"",
         "type:nginx OR type:TomcatAccessLog",
@@ -1014,9 +1190,8 @@
         "+tags:audit +AuditOperation:MOVE",
         "+tags:audit +AuditOperation:COPY",
         "+tags:audit +AuditOperation:\"READ METADATA\"",
-        "(+tags:audit +(Operation:CREATE OR Operation:DELETE OR Operation:\"READ CONTENT\" OR Operation:\"READ METADATA\" OR Operation:\"CHECK OUT\" OR Operation:\"CHECK IN\" OR Operation:UPDATE OR Operation:COPY OR Operation:MOVE)) OR (+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\")",
-        "+tags:audit +AuditOperation:\"CHECK IN\"",
-        "+tags:audit +AuditOperation:\"CHECK OUT\""
+        "(+tags:audit +(AuditOperation:CREATE OR AuditOperation:DELETE OR AuditOperation:\"READ CONTENT\" OR AuditOperation:\"READ METADATA\" OR AuditOperation:\"CHECK OUT\" OR AuditOperation:\"CHECK IN\" OR AuditOperation:UPDATE OR AuditOperation:COPY OR AuditOperation:MOVE)) OR (+tags:debug +\"[org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient]\" +\"query\")",
+        "+tags:audit +AuditOperation:\"CHECK IN\""
       ],
       "remember": 10
     },
