@@ -58,6 +58,11 @@ USERCTL=yes
 - Add your Alfresco host details to Icinga ```/etc/icinga/icinga.cfg``` (bottom of the file)
 - And create a new commands file for each host in ```/etc/icinga/objects``` using alfresco-NodeX.cfg as a template, just replace "NodeX" with the hostname of your Alfresco node.
  
+Change the timezone for graphite in file ```/opt/graphite/webapp/graphite/local_settings.py```.  Find the parameter ```TIME_ZONE = 'Europe/London'``` and change it to you own timezone. Then restart graphite with the command:
+
+```
+service carbon restart
+```
 
 What to do/change in Alfresco
 -----------------------------
@@ -68,14 +73,7 @@ What to do/change in Alfresco
 - Copy ```logstash-elasticsearch``` and ```logstash-graphite``` folders to the alfresco node(s).
 - On each folder edit logstash.conf file and change the paths to point to your alfresco installation.
 Edit ```logstash-elasticsearch/audit.sh``` script and make sure alfresco path is pointing to the correct location.
-Enable auditing in Alfresco if required. You only need to run ```audit.sh``` script in one of the Alfresco nodes so you can comment it out from ```logstas-elasticsearch/run_logstash.sh``` on the other nodes.
-- Exectute the following command on each folder to start sending data to the monitoring server.
-    
-```# run_logstash.sh start```
-
-Then you can stop it with
-
-```# run_logstash.sh stop```
+Enable auditing in Alfresco if required. You only need to run ```audit.sh``` script in one of the Alfresco nodes since the data comes from the database being the same for all Alfresco nodes, so you can comment it out from ```logstas-elasticsearch/run_logstash.sh``` on the other nodes.
 - If Icinga can not connect to Alfreso RMI service then add the following java option to Alfresco: ```-Djava.rmi.server.hostname=<hostname>``` and restart Alfresco application.
 
 Setting up Kibana
@@ -108,17 +106,8 @@ log4j.logger.org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient=debug
 log4j.logger.org.alfresco.repo.content.transform.TransformerLog=debug
 ```
 
-Restart Alfresco application for these two changes to take effect. Please note that the ```logstash-elasticsearch/audit.sh``` script should be run only from one of the Alfresco nodes so you should comment out these entries in the ```logstash-elasticsearch/run_logstash.sh``` file on the other nodes:
+Restart Alfresco application for these two changes to take effect. 
 
-```
-  nohup ./audit.sh 1>audit.log &>audit.log &
-```
-
-and 
-
-```
-  ps -ef | grep "/bin/sh ./audit.sh" | grep -v grep | awk '{print $2}' | xargs -I {} kill -9 {}
-```
 
 Setting up grafana
 ------------------
@@ -190,8 +179,30 @@ log_directory = 'pg_log'
 log_rotation_age = 1d
 log_rotation_size = 10MB
 log_min_duration_statement = 10
+log_min_messages = info
+log_min_error_statement = info
 ```
 Restart Postgres after this change. Make sure ```logstash-elasticsearch/logstash.conf``` is pointing to the correct path for Postgres logs.
+
+Starting the monitoring agents
+------------------------------
+
+Exectute the following commands on each node containing the monitoring agents.
+
+```
+# export LOGSTASH_DIR=<path>/logstash-elasticsearch
+# $LOGSTASH_DIR/run_logstash.sh start
+
+# export GRAPHITE_DIR=<path>/logstash-graphite
+# $GRAPHITE_DIR/run_logstash.sh start
+```
+
+Then you can stop the scripts with
+
+```
+# $LOGSTASH_DIR/run_logstash.sh stop
+# $GRAPHITE_DIR/run_logstash.sh stop
+```
 
 Alfresco Monitoring URLs
 ------------------------
