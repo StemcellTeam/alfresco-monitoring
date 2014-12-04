@@ -14,13 +14,13 @@ do
   if test -z $lastId; then
     echo "from Time: $fromTime" 
     curl -u admin:admin "http://localhost:8080/alfresco/service/api/audit/query/alfresco-access?verbose=true&limit=5000&fromTime=$fromTime" >> $auditLog
-    lastId=`grep "\"id\":" $auditLog | tail -1 | sed s/,// | tr -d "\n" | awk -F: '{print $2}'`
+    lastId=`grep "\"id\":" $auditLog | tail -1 | sed s/,// | tr -d "\n" | tr -d "\r" | awk -F: '{print $2}'`
     echo "To Id = $lastId"
     lastId=$((lastId + 1))
   else
     echo "From Id: $lastId"
     curl -u admin:admin "http://localhost:8080/alfresco/service/api/audit/query/alfresco-access?verbose=true&limit=5000&fromId=$lastId" >> $auditLog
-    lastId=`grep "\"id\":" $auditLog | tail -1 | sed s/,// | tr -d "\n" | awk -F: '{print $2}'`
+    lastId=`grep "\"id\":" $auditLog | tail -1 | sed s/,// | tr -d "\n" | tr -d "\r" | awk -F: '{print $2}'`
     echo "To Id = $lastId"
     lastId=$((lastId + 1))
   fi
