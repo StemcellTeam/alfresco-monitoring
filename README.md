@@ -72,8 +72,8 @@ What to do/change in Alfresco
 ```log4j.appender.File.layout.ConversionPattern=%d{yyyy-MM-dd} %d{ABSOLUTE} %-5p [%c] %m%n```
 - Copy ```logstash-elasticsearch``` and ```logstash-graphite``` folders to the alfresco node(s).
 - On each folder edit logstash.conf file and change the paths to point to your alfresco installation.
-Edit ```logstash-elasticsearch/audit.sh``` script and make sure alfresco path is pointing to the correct location.
-Enable auditing in Alfresco if required. You only need to run ```audit.sh``` script in one of the Alfresco nodes since the data comes from the database being the same for all Alfresco nodes, so you can comment it out from ```logstas-elasticsearch/run_logstash.sh``` on the other nodes.
+Edit ```logstash-elasticsearch/audit-access.sh and logstash-elasticsearch\audit-cmis.sh``` scripts and make sure alfresco path is pointing to the correct location.
+Enable auditing in Alfresco if required. You only need to run the audit scripts in one of the Alfresco nodes since the data comes from the database being the same for all Alfresco nodes, so you can comment out the audit entries from ```logstas-elasticsearch/run_logstash.sh``` on the other nodes.
 - If Icinga can not connect to Alfreso RMI service then add the following java option to Alfresco: ```-Djava.rmi.server.hostname=<hostname>``` and restart Alfresco application.
 
 Setting up Kibana
