@@ -1,3 +1,6 @@
+# Note:Some software packages have changed version and Graphite is not working at the moment. I will take a look as soon as I can and fix the installation process
+
+
 #alfresco-monitoring
 
 
